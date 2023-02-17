@@ -1,0 +1,67 @@
+/*
+  这个文件主要是一些公共颜色的地方
+  如需修改 建议新建一个样式文件再引入
+*/
+
+body {
+  font-size: var(--layout-body-fontSize) ;
+  background-color: var(--layout-body-backgroundColor);
+
+  /* 基础的样式配置*/
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  figure,
+  blockquote,
+  dl,
+  dd {
+    margin: 0;
+    padding: 0;
+  }
+
+  #app {
+
+    //框架头部
+    .layout-header {
+      background-color: var(--layout-header-backgroundColor);
+      color: var(--layout-header-color);
+    }
+
+    //框架主要内容部分
+    .layout-main {
+      background-color: var(--layout-main-backgroundColor);
+    }
+
+    //Element-plus
+    .el-menu {
+      border-color: var(--layout-menu-backgroundColor);
+      background-color: var(--layout-menu-backgroundColor);
+
+      .el-menu-item {
+        color: var(--layout-menu-color);
+        
+        &:hover {
+          background-color: var(--layout-menu-backgroundColor-light);
+        }
+
+        &.is-active {
+          color: var(--layout-menu-active-color) !important;
+          border-color: var(--layout-menu-active-color);
+          background-color: var(--layout-menu-active-backgroundColor);
+
+          &:hover {
+            background-color: var(--layout-menu-active-backgroundColor-light);
+
+          }
+
+        }
+      }
+    }
+  }
+
+
+}

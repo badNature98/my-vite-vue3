@@ -9,12 +9,13 @@
     </router-view>
   </section>
 </template>
-<script setup>
+<script setup lang="ts">
 import { useRoute, useRouter } from "vue-router";
-const route = useRoute();
-// const router = useRouter();
 import { computed } from "vue";
 import useStore from "@/store";
+
+const route = useRoute();
+// const router = useRouter();
 const { tagsView } = useStore();
 const cachedViews = computed(() => tagsView.cachedViews);
 </script>

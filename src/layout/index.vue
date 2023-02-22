@@ -3,7 +3,7 @@
   <component :is="useTemp" />
 </template>
 
-<script setup>
+<script setup lang="ts">
 import templates, { localLayout , styles } from "./template/index";
 import { useRoute } from "vue-router";
 
@@ -26,7 +26,7 @@ const useLayout = computed(() => {
 const useTemp = shallowRef();
 //监听 布局改变
 watch(()=>useLayout.value, getTemp);
-async function getTemp(val) {
+async function getTemp(val:any) {
   let tem = templates[val] || templates["None"];
   if (tem instanceof Function) {
     tem = (await tem()).default;

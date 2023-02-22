@@ -12,7 +12,7 @@ const NProgress = {
 // 白名单路由
 const whiteList = ['/login','/signup'];
 
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to:any, from, next) => {
   NProgress.start();
   const { user, dict, permission } = useStore();
   const hasToken = user.token;
@@ -66,7 +66,7 @@ router.beforeEach(async (to, from, next) => {
   } else {
     if (to.path === '/login' && to.query.up){
       try{
-        const res = await user.login({
+        const res:any = await user.login({
           username:'str',
           password: 'string',
           grant_type: 'string',

@@ -1,4 +1,9 @@
+<!-- 垃圾组件-功能实现不了 -->
 <script setup lang="ts">
+//子组件可以通讯父组件的方法
+import { ref, onMounted, watch, provide, onBeforeUnmount } from "vue";
+import { windowInfo } from "./setup";
+
 const config = defineProps({
   listen: {
     type: String,
@@ -9,9 +14,6 @@ const config = defineProps({
     default: undefined,
   },
 });
-//子组件可以通讯父组件的方法
-import { ref, onMounted, watch, provide, onBeforeUnmount } from "vue";
-
 const FlexBox = ref();
 //切换监听对象
 watch(
@@ -26,14 +28,7 @@ function changeListen(v: string) {
     window.addEventListener("scroll", scrollChange_window);
   }
 }
-interface windowInfo {
-  seeHeight: number;
-  seeWidth: number;
-  scrollHeight: number;
-  scrollWidth: number;
-  scrollLeft: number;
-  scrollTop: number;
-}
+
 const windowInfo = ref({
   seeHeight: 0,
   seeWidth: 0,
@@ -109,7 +104,7 @@ onBeforeUnmount(() => {
 <style lang="scss" scoped>
 .flex-box {
   display: flex;
-  align-items: "self-start";
+  align-items: flex-start;
   &.flex-box-scroll {
     overflow: auto;
   }

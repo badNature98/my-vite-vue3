@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="widt, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    let DefaultHeader = {
+      'Content-Type':'token',
+      'token':'5'
+    }
+    function request({ type, url,headers={} }) {
+      let promise = new Promise(function(reslove, reject) {
+        let xml = new XMLHttpRequest()
+        xml.open(type, url)
+        headers = {...headers,...DefaultHeader}
+        for(let key in headers){
+          xml.setRequestHeader(key,headers[key])
+        }
+
+        xml.send()
+        setTimeout(() => reject(xml), 5000)
+        xml.onreadystatechange = function() {
+          if (xml.readyState === 4) {
+            if (xml.status === 200) {
+              let res = JSON.parse(xml.response)
+              reslove(res)
+            } else {
+              reject(xml)
+            }
+          }
+        }
+
+      })
+      return promise
+    }
+  </script>
+
+</head>
+
+<body>
+  <script>
+    function getList(){
+      return request({ type: "GET", url: 'http://localhost:3322/files/getFile' })
+    };
+
+    (async () => {
+      const list = await getList()
+      list.data.forEach(item=>{
+        const a = document.createElement('a')
+        a.target='_black'
+        a.innerText = item.name
+        a.download = item.name
+        a.href=item.path
+        document.body.appendChild(a)
+        document.write('<br/>')
+      })
+    })()
+  </script>
+
+</body>
+
+</html>

@@ -29,12 +29,14 @@ function del() {
 async function getImages() {
   setTimeout(() => {
     // cancel({message:'取消请求'});
-    cancel();
+    // cancel();
   }, 10);
-   await getFileByPath();
-   await getFileByPath();
-   await getFileByPath();
-   await getFileByPath();
+  Promise.all([
+    getFileByPath(),
+    getFileByPath(),
+    getFileByPath(),
+    getFileByPath(),
+  ])
 }
 </script>
 

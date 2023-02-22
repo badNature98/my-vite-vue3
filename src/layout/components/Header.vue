@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import useStore from '@/store';
 import { onMounted ,computed  } from 'vue';
 const { permission, setting, app } = useStore();

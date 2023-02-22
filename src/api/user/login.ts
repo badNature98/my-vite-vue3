@@ -24,7 +24,7 @@ export function DES_login(params : LoginFormData): AxiosPromise<LoginResponseDat
  */
 export function login(params: LoginFormData): AxiosPromise<LoginResponseData> {
   return new Promise(function (reD) {
-    reD({
+    const retData :any= {
       "code": "00000",
       "data": {
         "accessToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJkZXB0SWQiOjIsImV4cCI6MTY2MDU0NDk1MiwidXNlcklkIjoyLCJhdXRob3JpdGllcyI6WyJBRE1JTiJdLCJqdGkiOiI4NDA1MGE1NS05ZjFkLTRlNmUtYjZmMC03YjczMjc5NTUwNTMiLCJjbGllbnRfaWQiOiJtYWxsLWFkbWluLXdlYiIsInVzZXJuYW1lIjoiYWRtaW4ifQ.X1XSqgHQleXIUPaTp1Qa7nySwWpyFXJyA2aq0WMCLs_tc51NfUZjrU6ipcoo9WHsAXJWZ6QPDTOisApE0kdG3EZhf1f0MvNBkfsV2NI5FFa2IXdw5c9vCT4-VN-jKDBjddPfLE_UbJcu2AxLqvhmmH-rTjN8Wd-v9xdHKu9t5kuve7F1OwijiM1bUApRiZ97vB2KKcCLLqog4LTUGZ5uff6BbUsJvnQAZgcqr_q-N8uSyiireAjTZma27MFE5oaoN6LN9ywv7mrxGS-ILWPURVMrlk6oBsUHLeg4zc2f-LlTLAjfQIS2Ye1CJ77SWPm7u48v0g96UBxrDo6--z2-5Q",
@@ -38,7 +38,8 @@ export function login(params: LoginFormData): AxiosPromise<LoginResponseData> {
         "jti": "84050a55-9f1d-4e6e-b6f0-7b7327955053"
       },
       "msg": "一切ok"
-    });
+    }
+    reD(retData);
   });
 }
 /**
@@ -75,7 +76,7 @@ export function principal() {
 //     reD(menuList);
 //   });
 // }
-export function listRoutes(username) {
+export function listRoutes(username:string) {
   return request({
     url: '/oauth/getMenu?username=' + username,
     method: 'get'
@@ -98,7 +99,7 @@ export function logout() {
  */
  export function visitor_login(params: LoginFormData): AxiosPromise<LoginResponseData> {
   return new Promise(function (reD) {
-    reD({
+    const retData:any = {
       "code": "00000",
       "data": {
         "accessToken": "visitor",
@@ -112,6 +113,7 @@ export function logout() {
         "jti": "84050a55-9f1d-4e6e-b6f0-7b7327955053"
       },
       "msg": "一切ok"
-    });
+    }
+    reD(retData);
   });
 }

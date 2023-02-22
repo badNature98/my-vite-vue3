@@ -15,7 +15,7 @@ let sayMessage = {
       this.close(i)
     }
   },
-  close(ind:number){
+  close(ind:any){
     this.Messages[ind]=null
   },
   //申请消息，如果消息显示数量是满的，就加入到队列

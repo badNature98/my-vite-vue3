@@ -9,7 +9,7 @@ import './styles/index'
 import useStore from '@/store';
 const components: Record<string, any> = import.meta.glob("./**/*.vue");
 //把路径转成名称
-componentPathToName(components)
+componentPathToName(components,'.vue')
 //以下为Layout 文件下的公用配置
 
 //默认使用的路由 None

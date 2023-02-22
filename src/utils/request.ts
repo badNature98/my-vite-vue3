@@ -37,7 +37,7 @@ const cancleBook: any = {
   },
 };
 /**
- * @name 清除axios 的请求
+ * @name 清除全部axios的请求
  * @param type 
  */
 export const cancel = function (parm?:{type?: string, message?:string|number}) {
@@ -112,7 +112,7 @@ const tryRefreshToken = async (config: any) => {
 };
 const handleData = function (response: AxiosResponse) {
   const { status, msg } = response.data;
-  if (status === 200) {
+  if (response.status === 200) {
     return response.data;
   } else {
     // 响应数据为二进制流处理(Excel导出)

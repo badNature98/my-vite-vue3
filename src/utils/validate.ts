@@ -98,7 +98,7 @@ export function isAlphabets(value:string) {
  * @param value
  * @returns {boolean}
  */
-export function isString(value:string) {
+export function isString(value:any) {
   return typeof value === 'string' || value instanceof String
 }
 

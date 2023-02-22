@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 //默认是用的模板
 </script>
 <template>

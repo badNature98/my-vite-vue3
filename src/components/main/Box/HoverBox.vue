@@ -1,21 +1,16 @@
 <script setup lang="ts">
-const props = defineProps({
-  ritate: {
-    type: [Number,String], // 参数类型
-    default: 2, //默认值
-    required: false, //是否必传
-  },
-  border: {
-    type: Boolean, // 参数类型
-    default: true, //默认值
-    required: false, //是否必传
-    validator: (value: any) => {
-      return value !== false; // 除了验证是否符合type的类型，此处再判断该值结果是否符合验证
-    },
-  },
-});
 import { isBoolean } from "@vueuse/shared";
 import { ref, onMounted } from "vue";
+const props = withDefaults(
+  defineProps<{
+    ritate?: number;
+    border?: boolean;
+  }>(),
+  {
+    ritate: 2,
+    border: false,
+  }
+);
 const HoverBox = ref();
 const Thumb = ref();
 const show = ref(false);

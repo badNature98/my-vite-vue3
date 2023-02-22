@@ -8,7 +8,7 @@ export interface AppState {
     withoutAnimation: boolean;
   };
   language: string;
-  size: string;
+  size: "" | "default" | "small" | "large" | undefined;
   activeName: string;
   window: AppState_window;
 }

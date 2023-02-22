@@ -126,7 +126,7 @@ function getChildRouter(item: any, itfe: any, roles: any) {
   let name: any = getName(item.url);
   let queryURL = getQuery(item.url);
   name = name ? name[name.length - 1] : null;
-  let ite: any = {
+  let ite : any = {
     path: itfe.path + "/" + name + item.Id,
     name: name + item.Id,
     component:
@@ -185,9 +185,10 @@ function getRouter(arr: any, roles: any) {
         for (let item of route.TreeNode) {
           ite.children.push(getChildRouter(item, ite, roles));
         }
-      } else {
-        ite.children.push(getChildRouter(item, ite, roles));
-      }
+      } 
+      // else {
+      //   ite.children.push(getChildRouter(item, ite, roles));
+      // }
     }
     list.push(ite);
   }

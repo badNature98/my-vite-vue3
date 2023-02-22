@@ -7,8 +7,14 @@ import path from "path";
 import { createHtmlPlugin } from "vite-plugin-html";
 // https://vitejs.dev/config/
 export default defineConfig(({mode}) => {
+  // 获取 .env 环境配置文件
   const env = loadEnv(mode,process.cwd());
+
   return {
+    base:'./',
+    build:{
+      chunkSizeWarningLimit:99999
+    },
     plugins: [
       vue(),
       createSvgIconsPlugin({
@@ -32,7 +38,7 @@ export default defineConfig(({mode}) => {
       open: true, // 运行自动打开浏览器
       proxy: {
         [env.VITE_APP_BASE_API]: {
-          target: 'http://localhost:3322',
+          target: 'http://localhost:2581',
           changeOrigin: true,
           rewrite: path =>
             path.replace(new RegExp('^' + env.VITE_APP_BASE_API), '')

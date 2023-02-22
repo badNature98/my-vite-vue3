@@ -7,10 +7,23 @@ const props = defineProps({
     type: Object,
     required: true,
   },
-  showChild: { //是否显示子级
+  showChild: {
+    //是否显示子级
     type: Boolean,
     default: true,
   },
+  mode: {
+    /**
+     * @description vertical = 纵向风格; horizontal = 横向风格
+     */
+    type: String,
+    default: "vertical",
+  },
+  collapse:{
+    //控制宽度
+    type:Boolean,
+    default:false
+  }
 });
 const menuComponent = shallowRef(MenuItem);
 if (
@@ -22,7 +35,6 @@ if (
 ) {
   menuComponent.value = MenuSub;
 }
-
 </script>
 
 <template>
@@ -34,23 +46,15 @@ if (
     <template v-if="item.children && item.children.length">
       <el-scrollbar
         v-if="
-          (layout === 'horizontal' && item.children.length > 18) ||
-          (layout !== 'horizontal' && collapse && item.children.length > 18)
+          (props.mode === 'horizontal' && item.children.length > 18) ||
+          (props.mode !== 'horizontal' && props.collapse && item.children.length > 18)
         "
         class="vab-menu-children-height"
       >
-        <Menu
-          v-for="route in item.children"
-          :key="route.path"
-          :item="route"
-        />
+        <Menu v-for="route in item.children" :key="route.path" :item="route" />
       </el-scrollbar>
       <template v-else>
-        <Menu
-          v-for="route in item.children"
-          :key="route.path"
-          :item="route"
-        />
+        <Menu v-for="route in item.children" :key="route.path" :item="route" />
       </template>
     </template>
   </component>

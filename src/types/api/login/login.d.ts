@@ -6,7 +6,13 @@ export interface LoginResponseData {
   refreshToken: string;
   refresh_token:string;
   expires_in:number;
+  scope:string;
+  deptId:string;
+  userId:string;
+  username:string;
+  jti?:string;
 }
+
 /**
  * 登录表单类型声明
  */

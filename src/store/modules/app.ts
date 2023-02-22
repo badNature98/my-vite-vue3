@@ -60,7 +60,7 @@ const useAppStore = defineStore({
     toggleDevice(device: string) {
       this.device = device;
     },
-    setSize(size: string) {
+    setSize(size: "" | "default" | "small" | "large" | undefined  ) {
       this.size = size;
       localStorage.set("size", size);
     },

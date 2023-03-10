@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>界面A_parent</title>
+  <script src="./page-message.js"></script>
+</head>
+<body>
+  父界面
+  <input type="text" id="mes">
+  <button id="but">发送</button>
+  <span id="getMessage"></span>
+  <iframe id="iframe_pageB" style="display: block;margin-top: 10px; width: 500px;" src="http://127.0.0.1:5501/pageA_child.html"></iframe>
+  <script>
+    let Con = new pageMessage()
+    Con.connection({url:'http://127.0.0.1:5501',target:iframe_pageB})
+    let comf = Con.bind((a)=>{
+      getMessage.innerText = a
+    })
+    //发送信息
+    but.addEventListener('click',function(){
+      let text = mes.value;
+      Con.send({message:text})
+      setTimeout(()=>{
+        console.log('修改成功')
+        comf.type = ['woaini']
+      },3000)
+    })
+  </script>
+</body>
+</html>

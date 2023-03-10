@@ -1,0 +1,1 @@
+import{bA as e}from"./app-0eb71c43.js";function r(r){return e({url:"/files/getFile",method:"get",params:r})}function t(r){return e({url:"/files/download",method:"get",params:r})}export{t as d,r as g};

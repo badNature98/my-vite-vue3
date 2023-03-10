@@ -8,6 +8,15 @@
   .el-form {
     margin: auto;
 
+    .el-form-item {
+      position: relative;
+      >label {
+        position: absolute;
+        right: 100%;
+        white-space: nowrap;
+      }
+    }
+
     .el-form-item__label {
       align-items: center;
     }

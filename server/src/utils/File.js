@@ -4,6 +4,17 @@ const stream = require("stream");
 const eol = require("eol");
 // stream.setEncoding('utf8');
 module.exports = {
+  getFile(path){
+    return new Promise(function(reslove,reject){
+      fs.readFile(path,'utf-8',function(err,data){
+        if(err){
+          reject("error")
+        }else{
+          reslove(data)
+        }
+      })
+    })
+  },
   //文件太大会报错
   read: async function (dir) {
     return new Promise(function (reslove, reject) {

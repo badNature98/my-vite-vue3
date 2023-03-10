@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { isBoolean } from "@vueuse/shared";
-import { ref, onMounted } from "vue";
+import { ref, onMounted ,computed} from "vue";
 const props = withDefaults(
   defineProps<{
-    ritate?: number;
+    ritate?: number | string;
     border?: boolean;
   }>(),
   {
@@ -18,6 +18,7 @@ const ThumbStyle = ref({
   left: "0",
   top: "0",
 });
+const ritate = computed(()=>Number(props.ritate))
 const HoverBoxStyles = ref({
   transform: "",
 });
@@ -40,11 +41,11 @@ onMounted(() => {
     let y = e.layerY || 1;
 
     //划过凹陷
-    // x=x / e.target.clientWidth * props.ritate - props.ritate*0.5;
-    // y=0 - (y / e.target.clientHeight* props.ritate - props.ritate*0.5);
+    // x=x / e.target.clientWidth * ritate.value - ritate.value*0.5;
+    // y=0 - (y / e.target.clientHeight* ritate.value - ritate.value*0.5);
     //划过凸起
-    x = 0 - ((x / e.target.clientWidth) * props.ritate - props.ritate * 0.5);
-    y = (y / e.target.clientHeight) * props.ritate - props.ritate * 0.5;
+    x = 0 - ((x / e.target.clientWidth) * ritate.value - ritate.value * 0.5);
+    y = (y / e.target.clientHeight) * ritate.value - ritate.value * 0.5;
 
     HoverBoxStyles.value.transform = `perspective(700px) rotateX(${y}deg) rotateY(${x}deg)`;
   });

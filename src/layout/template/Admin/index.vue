@@ -91,7 +91,7 @@ $main-color:#fff;
     top: 0;    
     margin-left: $sidebar-width;
     height: $header-height;
-    width: 100%;
+    // width: 100%;
     background: #fff;
     border-bottom: 2px solid #aaa;
     box-sizing: border-box;

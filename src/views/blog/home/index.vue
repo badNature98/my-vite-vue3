@@ -1,68 +1,54 @@
 <script setup lang="ts">
-import { defineComponent, onMounted, ref } from "vue";
-import { useRouter } from "vue-router";
-import { getFileByPath } from "@/api/local/index";
-import { cancel } from "@/utils/request";
-let tableData = ref([
-  {
-    date: "2016-05-03",
-    name: "Tom",
-    address: "No. 189, Grove St, Los Angeles",
-  },
-]);
-const router = useRouter()
-function goBack(){
+import { ref, onBeforeUnmount, onMounted } from "vue";
+import QueryList from "./components/queryList/index.vue";
 
-router.go(-1)
-}
+const text = ref("text");
 
-function add() {
-  tableData.value.push({
-    date: "2016-05-03",
-    name: "Tom",
-    address: "No. 189, Grove St, Los Angeles",
-  });
+for (let i = 0; i < 60; i++) {
+  text.value += "<br/>text";
 }
-function del() {
-  tableData.value.splice(0, 1);
-}
-async function getImages() {
-  setTimeout(() => {
-    // cancel({message:'取消请求'});
-    // cancel();
-  }, 10);
-  Promise.all([
-    getFileByPath(),
-    getFileByPath(),
-    getFileByPath(),
-    getFileByPath(),
-  ])
-}
+async function getFile(val: string) {}
+let number = ref('input');
+onBeforeUnmount(() => {
+  console.log("e");
+});
+onMounted(() => {
+  console.log("s");
+});
 </script>
-
 <template>
-  <hover-box class="test" ritate="5" border style="width: 200px">
-    <h3>HoverBox 组件</h3>
-    <p>可以设置组件划过时的效果</p>
-  </hover-box>
-
-  <el-button @click="goBack">返回</el-button>
-  <el-button @click="add">添加</el-button>
-  <el-button @click="del">删除</el-button>
-  <el-button @click="getImages">获取</el-button>
-  <AnimateBox>
-    <div>123</div>
-  </AnimateBox>
-
-  <el-table :data="tableData">
-    <el-table-column prop="date" label="Date" width="180" />
-    <el-table-column prop="name" label="Name" width="180" />
-    <el-table-column prop="address" label="Address" />
-  </el-table>
-  <FlexBox>
-    <FlexItem>
-      
-    </FlexItem>
-  </FlexBox>
-  <!-- <Iframe src="/server/html/index.html"/> -->
+  <div class="blog-home">
+    <drop-box ms="250">
+      <template #header> 标题 </template>
+      <AnimateBox>
+        <input v-model="number" type="text" />
+        超出三界之外
+        <div style="">name</div>
+        <QueryList />
+        <div
+          v-for="ind in number"
+          style="
+            display: inline-block;
+            padding: 30px;
+            border: 1px solid black;
+            margin: 15px;
+          "
+          :key="ind"
+        >
+          {{ ind }}
+        </div>
+      </AnimateBox>
+    </drop-box>
+  </div>
 </template>
+<style lang="scss" scoped>
+.blog-home {
+  overflow: auto;
+  margin: 0 1.4rem;
+  font-size: 1rem;
+  .query-box {
+    background: beige;
+    padding: 30px;
+  }
+}
+</style>

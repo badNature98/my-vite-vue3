@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <code>
+
+    import "@babel/polyfill"
+    import 'core-js'
+    import 'core-js/stable';
+    import 'regenerator-runtime/runtime';
+    // npm install --save @babel/polyfill
+    // npm install core-js/stable
+    // npm install regenerator-runtime/runtime
+    // npm install --save core-js regenerator-runtime
+
+    /**
+    * @name babel.config.js文件配置
+    module.exports = {
+    presets: [["@vue/cli-plugin-babel/preset", {useBuiltIns: "entry",}]],
+    env: {
+    development: {
+    plugins: ['dynamic-import-node'],
+    },
+    },
+    }
+    */
+    /**
+    * @name package.json配置
+    "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 11" ] */ </code> </body> </html>

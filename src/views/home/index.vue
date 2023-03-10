@@ -28,11 +28,6 @@ export default defineComponent({
       欢迎使用 
     </Header>
     <RouterMenu :showChild="false"/>
-    <!-- <div>
-      <div v-for="item in roles" :key="item">
-        <el-button @click="routerTo(item)" type="primary">{{item}}</el-button>
-        </div>
-    </div> -->
   </div>
 </template>
 <style lang="scss" scoped>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>界面A_子界面</title>
+  <script src="./page-message.js"></script>
+</head>
+
+<body>
+  子界面
+  <input type="text" id="mes">
+  <button id="but">发送 type = woaini</button>
+  <button id="but_d">发送 type = default</button>
+  <span id="getMessage"></span>
+  <script>
+    let DE = new pageMessage()
+    DE.connection({ url: 'http://127.0.0.1:5501' })
+
+    DE.bind({
+      call: (a) => {
+        console.log(a)
+        getMessage.innerText = a
+      }
+    })
+    //发送信息
+    but.addEventListener('click', function() {
+      let text = mes.value;
+      DE.send({ message: text ,type:'woaini'})
+    })
+    but_d.addEventListener('click', function() {
+      let text = mes.value;
+      DE.send({ message: text})
+    })
+  </script>
+</body>
+
+</html>

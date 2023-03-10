@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import settings from '@/settings'
-import { computed, ref,watch } from "vue";
+import settings from "@/settings";
+import { computed, ref, watch } from "vue";
 import userStore from "@/store";
-import {useRoute} from 'vue-router'
+import { useRoute } from "vue-router";
 const props = defineProps({
+  ellipsis:{
+    type:Boolean,
+    default:true,
+  },
   showChild: {
     //是否显示子
     type: Boolean,
@@ -16,25 +20,30 @@ const props = defineProps({
     type: String,
     default: "vertical",
   },
-  path:{
+  path: {
     /**
      * @description 路由的开始路径 已办用于获取一级往后的菜单列
      */
-    type:String,
-    default:null
-  }
+    type: String,
+    default: null,
+  },
 });
-const { permission,app } = userStore();
-const appWindow = computed(()=>app.window)
-watch(()=>appWindow.value.innerWidth,(v)=>{
-  if(v<settings.menuCollapse){
-    isCollapse.value=true
-  }else{
-    isCollapse.value=false
-
-  }
-})
-const isCollapse = ref(appWindow.value.innerWidth<settings.menuCollapse); //是否折叠
+const { permission, app, controller } = userStore();
+const appWindow = computed(() => app.window);
+const isCollapse = ref(false); //是否折叠
+if (controller.changeRouterMenu) {
+  watch(
+    () => appWindow.value.innerWidth,
+    (v) => {
+      if (v < settings.menuCollapse) {
+        isCollapse.value = true;
+      } else {
+        isCollapse.value = false;
+      }
+    }
+  );
+  isCollapse.value = appWindow.value.innerWidth < settings.menuCollapse;
+}
 //打开
 const handleOpen = (key: string, keyPath: string[]) => {
   // console.log(key, keyPath);
@@ -44,19 +53,19 @@ const handleClose = (key: string, keyPath: string[]) => {
   // console.log(key, keyPath);
 };
 const list = computed(() => {
-  if(props.path){
-    for(let item of permission.addRoutes){
-      if(item.path === props.path)return item.children
+  if (props.path) {
+    for (let item of permission.addRoutes) {
+      if (item.path === props.path) return item.children;
     }
   }
   return permission.addRoutes;
 });
-const route = useRoute()
-function pathChange(){
-app.changeActiveName(route.path)
+const route = useRoute();
+function pathChange() {
+  app.changeActiveName(route.path);
 }
-watch(()=>route.path,pathChange)
-pathChange()
+watch(() => route.path, pathChange);
+pathChange();
 </script>
 <template>
   <el-menu
@@ -64,6 +73,7 @@ pathChange()
     class="el-menu-vertical-demo"
     :collapse="isCollapse"
     :mode="props.mode"
+    :ellipsis="props.ellipsis"
     @open="handleOpen"
     @close="handleClose"
   >

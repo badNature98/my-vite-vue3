@@ -1,0 +1,36 @@
+## flutter 环境变量
+	再用户变量中添加
+	FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+	PUB_HOSTED_URL=https://pub.flutter-io.cn
+
+## flutter run 
+	
+### Android错误 
+
+#### 一、#网络原因
+	项目目录\android\build.gradle
+	google() 和 mavenCentral() 注释
+	换成国内代理	如下
+        	maven { url 'https://maven.aliyun.com/repository/google' }
+        	maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        	maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+        	maven { url 'https://dl.bintray.com/alphacep/vosk' }  
+
+#### 二、gradle
+  下载地址:	[https://services.gradle.org/distributions/](https://services.gradle.org/distributions)
+
+```test
+	下载的安装包解压后前往
+	项目目录\android\gradle\wrapper\gradle-wrapper.properties	
+	distributionUrl="本地gradle路径"
+```
+#### 三、配置
+	项目路径\android\gradle.properties
+```config
+	org.gradle.jvmargs=-Xmx1536M
+	android.useAndroidX=true
+	android.enableJetifier=true
+	android.overridePathCheck=true
+```
+
+	

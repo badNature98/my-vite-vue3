@@ -1,0 +1,13 @@
+.el-button {
+  &.dynamic-scale {
+
+
+    &:active {
+      transform: scale(var(--scale));
+
+      span {
+        transform: scale( calc( 1 / var(--scale) ) );
+      }
+    }
+  }
+}

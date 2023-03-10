@@ -27,7 +27,7 @@ export const localLayout = ref('Node')
  */
 export const styles = ref({
   '--layout-body-fontSize':'16px',
-  
+  'font-size':"var(--layout-body-fontSize)",
   '--layout-body-backgroundColor': '#F9F9F9',
 
   '--layout-header-backgroundColor': '#303030',
@@ -75,10 +75,10 @@ interface styles {
 
 export default components
 
-//加载完成后 判断是什么西永
+//加载完成后 判断是什么系统
 window.addEventListener('load',()=>{
   const {OS} = useStore()
-  console.log(OS.mobile)
+  console.log(OS.mobile)//是不是手机
   setProperty(styles.value)
   
 })

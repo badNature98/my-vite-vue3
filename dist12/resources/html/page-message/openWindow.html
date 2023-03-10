@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>打开新界面发送信息</title>
+  <script src="./page-message.js"></script>
+</head>
+<body>
+  <input type="text" id="mes">
+  <button id="but">打开</button>
+  <button id="send">发送</button>
+  <span id="getMessage"></span>
+  <script>
+    let OPEN = new pageMessage()
+    but.addEventListener('click',function(){
+      let newPage = window.open('/pageA_child.html','_blank')
+      OPEN.connection({url:'http://127.0.0.1:5501',target:newPage})
+    })
+    send.addEventListener('click',function(){
+      OPEN.send({message: mes.value})
+    })
+    OPEN.bind(a=>{
+      getMessage.innerText = a
+    })
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+import{r as l}from"./runtime-core.esm-bundler-0bec55ea.js";const s=l(""),e={send(){for(let l of e.list)l(s.value)},unbind(l){let s=0;for(let i of e.list){if(i===l){e.list.splice(s,1);break}s++}console.log(e.list)},bind:l=>(e.list.push(l),l.bind(null,s.value)),list:[]};export{e as d,s as q};

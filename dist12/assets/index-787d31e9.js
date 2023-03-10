@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-1b428a4d.js";import{y as r,z as s,B as o}from"./runtime-core.esm-bundler-0bec55ea.js";const t={class:"blog-body"};const n=e({},[["render",function(e,n){return r(),s("div",t,[o(e.$slots,"default")])}]]);export{n as default};

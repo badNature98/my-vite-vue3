@@ -6,7 +6,7 @@ import useTagsViewStore from './modules/tagsView';
 import useDictStore from './modules/dict';
 import useMessage from './modules/message';
 import useOS from './modules/OS';
-
+import useController from './modules/controller'
 const useStore = () => ({
   user: useUserStore(),
   app: useAppStore(),
@@ -16,6 +16,7 @@ const useStore = () => ({
   dict: useDictStore(),
   message:useMessage(),
   OS:useOS(),
+  controller:useController(),
 });
 
 export default useStore;

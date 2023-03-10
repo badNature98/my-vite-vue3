@@ -4,7 +4,7 @@
 */
 
 body {
-  font-size: var(--layout-body-fontSize) ;
+  font-size: var(--layout-body-fontSize);
   background-color: var(--layout-body-backgroundColor);
 
   /* 基础的样式配置*/
@@ -41,9 +41,25 @@ body {
       border-color: var(--layout-menu-backgroundColor);
       background-color: var(--layout-menu-backgroundColor);
 
+      &.el-menu--horizontal {
+        >.el-sub-menu {
+          &.is-active {
+            .el-sub-menu__title {
+              color:var(--layout-menu-active-color);
+              border-bottom-color: var(--layout-menu-active-color);
+              &:hover{
+                background-color: var(--layout-menu-backgroundColor-light);
+
+              }
+            }
+          }
+
+        }
+      }
+
       .el-menu-item {
         color: var(--layout-menu-color);
-        
+
         &:hover {
           background-color: var(--layout-menu-backgroundColor-light);
         }

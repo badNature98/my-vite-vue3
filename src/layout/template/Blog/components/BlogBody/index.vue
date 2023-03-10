@@ -1,5 +1,5 @@
 <template>
-  <div class="BlogBody">
+  <div class="blog-body">
     <slot/>
   </div>
 </template>

@@ -2,17 +2,21 @@
 import { Ref, ref } from "vue";
 
 //点击后触发
-function bindLongClick(){
-  function longClick(){
+function bindLongClick() {
+  function longClick() {}
+}
+let length: number, ind: number;
+let list: Ref<number[]> = ref([]);
 
+function initData() {
+  list.value.splice(0)
+  length = 100;
+  ind = 0;
+  while (ind++ < length) {
+    list.value.push(ind);
   }
 }
-let length = 50;
-let ind = 0;
-let list: Ref<number[]> = ref([]);
-while (ind++ < length) {
-  list.value.push(ind);
-}
+
 function add() {
   list.value.push(ind++);
 }
@@ -26,22 +30,24 @@ function disasters() {
   let length = Math.floor(list.value.length / 2);
   let del = 0;
   while (del++ < length) {
-    let random = Math.floor(Math.random()*list.value.length);
-    list.value.splice(random,1);
+    let random = Math.floor(Math.random() * list.value.length);
+    list.value.splice(random, 1);
   }
 }
+initData()
 </script>
 <template>
+  <el-button @click="initData()">重置</el-button>
   <el-button @click="random()">打乱</el-button>
   <el-button @click="sort()">排序</el-button>
   <el-button @click="add()">添加</el-button>
-  <el-button type="danger" @click="disasters()">打个响指</el-button>
+  <el-button class="dynamic-scale" type="danger" @click="disasters()">打个响指</el-button>
   <br />
   <br />
   <AnimateBox class="animate-text">
-    <div v-for="index in list" :key="index">
+    <hover-box v-for="index in list" :key="index">
       {{ index }}
-    </div>
+    </hover-box>
   </AnimateBox>
 </template>
 <style lang="scss" scoped>

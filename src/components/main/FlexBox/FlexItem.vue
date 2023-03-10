@@ -1,6 +1,6 @@
 <!-- 垃圾组件-功能实现不了 -->
 <script setup lang="ts">
-import { ref, inject, watch, computed, defineEmits, onMounted } from "vue";
+import { ref, inject, watch, computed, onMounted } from "vue";
 import { isNumber } from "@/utils/validate";
 import { windowInfo } from "./setup";
 

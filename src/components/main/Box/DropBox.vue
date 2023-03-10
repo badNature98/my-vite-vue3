@@ -27,7 +27,6 @@ const DropContentInner = ref()//内容
 const drop = ref(true); //状态改变时计算用
 const showDrop = ref(true); //最终结果
 let timer: any = null;
-
 const changeDorp = function (bool?:any) 
 {
   if (!props.clickHeaderDrop) return;
@@ -38,7 +37,6 @@ const changeDorp = function (bool?:any)
   DropContent.value.style.display = "block";
   //获取内容的高度
   let height = DropContentInner.value.clientHeight
-
   if (drop.value) {
     DropContent.value.style.height = `0px`;
     sfunc = () => {
@@ -69,7 +67,6 @@ onMounted(() => {
 </script>
 <template>
   <div
-    ref="DropBox"
     class="drop-box"
     :class="{
       drop: showDrop,
@@ -96,6 +93,7 @@ onMounted(() => {
 </template>
 <style lang="scss" scoped>
 .drop-box {
+  overflow: hidden;
   &.is-drop {
     > .drop-box-header {
       > .drop-box-header-right {

@@ -14,7 +14,7 @@
     "lib": ["ESNext", "DOM"],
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
     },
     "allowSyntheticDefaultImports": true, // 默认导入
     "skipLibCheck": true, // 不对第三方依赖类型检查 ，element-plus 生产打包报错

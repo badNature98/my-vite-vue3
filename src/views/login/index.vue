@@ -41,7 +41,6 @@ const clickLogin = async (formEl: FormInstance | undefined) => {
     <el-form
       :model="loginForm"
       :rules="rules"
-      label-width="80px"
       ref="loginView"
     >
       <el-form-item label="登录方式">

@@ -1,14 +1,20 @@
 (() => {
+  let use: "server" | "local" = "local";
   //临时使用的CND
+  let CNDS = [
+    {
+      server: "https://d3js.org/d3.v5.min.js",
+      local: "/package/d3js/d3.v5.min.js",
+    },
+  ];
   document.head.appendChild(
-    ["https://d3js.org/d3.v5.min.js"].reduce((h, u) => {
-    let script = document.createElement("script");
-    script.setAttribute('src',u)
-    h.appendChild(script);
-    return h
-  }, document.createDocumentFragment())
-  )
-  
+    CNDS.reduce((h, u) => {
+      let script = document.createElement("script");
+      script.setAttribute("src", u[use]);
+      h.appendChild(script);
+      return h;
+    }, document.createDocumentFragment())
+  );
 })();
 
 //app.ts 中注冊了 app
@@ -19,8 +25,6 @@ import router from "@/router";
 import { createPinia } from "pinia";
 import ElementPlus from "element-plus";
 import "element-plus/theme-chalk/index.css";
-
-
 
 //路由守卫
 import "@/router/permission";

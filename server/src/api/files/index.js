@@ -18,6 +18,25 @@ server.get("/files/getFile", async (req, res) => {
   let timeOut = setTimeout(() => {
     res.send("超时");
   }, 1000);
+  const { test = null, deep = true, flat = false } = req.query;
+
+  //获取文件
+  let list = await File.get({
+    dir: path.resolve(__dirname, "../../../resources"),
+    test, //正则表达  /\.svg$/
+    deep, //是否深查询
+    flat, //是否平摊数组
+  });
+  clearTimeout(timeOut);
+  // res.send(JSON.stringify(list));
+  let config = { req: deepCopy(req), res: deepCopy(res) };
+  res.send(JSON.stringify({ data: list, config }));
+});
+
+server.get("/files/getFileByUrl", async (req, res) => {
+  let timeOut = setTimeout(() => {
+    res.send("超时");
+  }, 1000);
   //获取文件
   let list = await File.get({
     dir: path.resolve(__dirname, "../../../"),
